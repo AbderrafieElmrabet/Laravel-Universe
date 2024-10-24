@@ -6,7 +6,7 @@
     <title>About</title>
 </head>
 <body>
-    <h1>À propos</h1>
-    <p>Je suis [Votre Nom], développeur Laravel.</p>
+    <h1>About :</h1>
+    <p>I'm Abderrafie, a Laravel developer.</p>
 </body>
 </html>
