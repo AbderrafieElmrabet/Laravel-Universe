@@ -1,28 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact Us</title>
 </head>
 
 <body>
-    <form method="POST" action="/contact">
+    @if(session('success'))
+        <div>{{ session('success') }}</div>
+    @endif
+
+    <form action="/contact" method="POST">
         @csrf
+
         <div>
-            <label for="name">Nom :</label>
-            <input type="text" name="name" id="name">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" required>
         </div>
+
         <div>
-            <label for="email">Email :</label>
-            <input type="email" name="email" id="email">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
         </div>
+
         <div>
-            <label for="message">Message :</label>
-            <textarea name="message" id="message"></textarea>
+            <label for="message">Message</label>
+            <textarea name="message" id="message" required></textarea>
         </div>
-        <button type="submit">Envoyer</button>
+
+        <button type="submit">Send</button>
     </form>
 </body>
 

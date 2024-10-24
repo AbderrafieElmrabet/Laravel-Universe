@@ -11,17 +11,19 @@ class ContactController extends Controller
     {
         return view('contact');
     }
-    // public function store(Request $request)
-    // {
-    //     $data = $request->validate([
-    //         'name' => 'required',
-    //         'email' => 'required|email',
-    //         'message' => 'required'
-    //     ]);
-    //     Mail::send('email.contact', $data, function ($message) use ($data) {
-    //         $message->to('abderafieelmrabet@gmail.com', 'Abderrafie Laravel')->subject('New contact Message');
-    //     });
-    //     //
-    //     return redirect('/')->with('success', 'your message was sent.');
-    // }
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required',
+        ]);
+
+        Mail::raw("Nom: {$data['name']}\nEmail: {$data['email']}\nMessage: {$data['message']}", function ($message) use ($data) {
+            $message->to('bderafieelmrabet@gmail.com')
+                    ->subject('Nouveau message de contact');
+        });
+
+        return redirect('/contact')->with('success', 'Votre message a bien été envoyé.'); 
+    }
 }
