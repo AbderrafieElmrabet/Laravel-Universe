@@ -19,6 +19,8 @@ class ContactController extends Controller
             'message' => 'required',
         ]);
 
+        //specifiy Variables
+
         Mail::raw("Nom: {$data['name']}\nEmail: {$data['email']}\nMessage: {$data['message']}", function ($message) use ($data) {
             $message->to('bderafieelmrabet@gmail.com')
                     ->subject('Nouveau message de contact');
